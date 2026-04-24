@@ -243,12 +243,21 @@ export default function Experience() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 glass neon-border rounded p-6"
+          className="mt-8 rounded-xl overflow-hidden border border-[#00ff41]/20"
+          style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}
         >
-          <h3 className="text-[#00ff41] text-sm mb-4 flex items-center gap-2">
-            <span className="text-[#004d00]">$</span> cat education.log
-          </h3>
-          <div className="space-y-3">
+          {/* Title bar */}
+          <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
+            <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+            <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+            <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+            <span className="mx-auto text-xs text-[#006600] tracking-widest">education.log</span>
+          </div>
+          {/* Body */}
+          <div className="bg-[#0a0a0a] px-5 py-4 space-y-3">
+            <p className="text-[#004d00] text-xs mb-1">
+              <span className="text-[#008f11]">$</span> cat education.log
+            </p>
             {[
               { title: 'Professional Certificate in Software Engineering', org: 'ALX Africa', period: '2022 – 2023' },
               { title: 'General Engineering Studies', org: 'ENSPT Yaoundé / University of Padova, Italy', period: '2017 – 2019' },

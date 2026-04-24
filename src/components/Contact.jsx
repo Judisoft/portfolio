@@ -110,45 +110,65 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="glass neon-border rounded p-8 space-y-5">
-              <p className="text-[#004d00] text-xs mb-2">
-                <span className="text-[#008f11]">$</span> cat contact.json
-              </p>
-              {CONTACT_ITEMS.map((item) => (
-                <div key={item.label} className="flex items-center gap-4 group">
-                  <div className="w-8 h-8 rounded glass border border-[#003300] flex items-center justify-center text-[#008f11] shrink-0 group-hover:border-[#00ff41]/40 group-hover:text-[#00ff41] transition-colors">
-                    {item.icon}
+            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
+              {/* Title bar */}
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="mx-auto text-xs text-[#006600] tracking-widest">contact.json</span>
+              </div>
+              {/* Body */}
+              <div className="bg-[#0a0a0a] px-5 py-4 space-y-4">
+                <p className="text-[#004d00] text-xs mb-1">
+                  <span className="text-[#008f11]">$</span> cat contact.json
+                </p>
+                {CONTACT_ITEMS.map((item) => (
+                  <div key={item.label} className="flex items-center gap-4 group">
+                    <div className="w-8 h-8 rounded glass border border-[#003300] flex items-center justify-center text-[#008f11] shrink-0 group-hover:border-[#00ff41]/40 group-hover:text-[#00ff41] transition-colors">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs text-[#004d00]">&quot;{item.label}&quot;:</p>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target={item.href.startsWith('http') ? '_blank' : undefined}
+                          rel="noopener noreferrer"
+                          className="text-[#00cc33] text-xs hover:text-[#00ff41] hover:neon-text transition-colors"
+                        >
+                          &quot;{item.value}&quot;
+                        </a>
+                      ) : (
+                        <p className="text-[#00cc33] text-xs">&quot;{item.value}&quot;</p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs text-[#004d00]">&quot;{item.label}&quot;:</p>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target={item.href.startsWith('http') ? '_blank' : undefined}
-                        rel="noopener noreferrer"
-                        className="text-[#00cc33] text-xs hover:text-[#00ff41] hover:neon-text transition-colors"
-                      >
-                        &quot;{item.value}&quot;
-                      </a>
-                    ) : (
-                      <p className="text-[#00cc33] text-xs">&quot;{item.value}&quot;</p>
-                    )}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="glass neon-border rounded p-6">
-              <p className="text-xs text-[#004d00] mb-3">
-                <span className="text-[#008f11]">$</span> status --check
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse shadow-sm shadow-[#00ff41]" />
-                <span className="text-[#00cc33] text-xs">ONLINE — open to opportunities</span>
+            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
+              {/* Title bar */}
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="mx-auto text-xs text-[#006600] tracking-widest">status.sh</span>
               </div>
-              <p className="text-[#006600] text-xs mt-2 leading-relaxed">
-                Available for full-time roles, contract work, consulting in backend / fintech engineering, and Product Development.
-              </p>
+              {/* Body */}
+              <div className="bg-[#0a0a0a] px-5 py-4">
+                <p className="text-xs text-[#004d00] mb-3">
+                  <span className="text-[#008f11]">$</span> status --check
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse shadow-sm shadow-[#00ff41]" />
+                  <span className="text-[#00cc33] text-xs">ONLINE — open to opportunities</span>
+                </div>
+                <p className="text-[#006600] text-xs mt-2 leading-relaxed">
+                  Available for full-time roles, contract work, consulting in backend / fintech engineering, and Product Development.
+                </p>
+              </div>
             </div>
           </motion.div>
 
@@ -158,7 +178,15 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="glass neon-border rounded p-8 space-y-5">
+            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
+              {/* Title bar */}
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="mx-auto text-xs text-[#006600] tracking-widest">send_message.sh</span>
+              </div>
+            <form onSubmit={handleSubmit} className="bg-[#0a0a0a] px-5 py-4 space-y-5">
               <p className="text-[#004d00] text-xs mb-1">
                 <span className="text-[#008f11]">$</span> ./send_message.sh
               </p>
@@ -195,6 +223,7 @@ export default function Contact() {
                 // opens your default mail client with the message pre-filled
               </p>
             </form>
+            </div>
           </motion.div>
         </div>
       </div>

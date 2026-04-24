@@ -45,7 +45,7 @@ function TerminalCommand() {
   return (
     <div className="text-left space-y-1 text-sm md:text-base">
       <div>
-        <span className="text-[#004d00]">KJB@System:~$&nbsp;</span>
+        <span className="text-[#004d00]">KJB@portfolio:~$&nbsp;</span>
         <span className="text-[#00cc33]">{cmdText}</span>
         {typing && <span className="animate-blink text-[#00ff41]">_</span>}
       </div>
@@ -86,18 +86,35 @@ export default function Hero() {
         animate="show"
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
       >
-        <motion.p variants={item} className="text-[#008f11] text-xs tracking-[0.4em] uppercase mb-4">
-          <span className="text-[#004d00]">root@portfolio:~#</span> ./init
-        </motion.p>
-
-        <motion.h1 variants={item} className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-          <span className="text-gradient">Kum Jude</span>
-          <br />
-          <span className="text-[#00ff41] neon-text">Bama</span>
-        </motion.h1>
-
         <motion.div variants={item} className="mb-8 flex justify-center">
-          <TerminalCommand />
+          {/* macOS terminal window */}
+          <div className="w-full max-w-xl rounded-xl overflow-hidden border border-[#00ff41]/20"
+            style={{ boxShadow: '0 0 40px rgba(0,255,65,0.1), 0 20px 60px rgba(0,0,0,0.6)' }}>
+            {/* Title bar */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-[#1a1a1a] border-b border-[#00ff41]/10">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57] hover:opacity-80 transition-opacity cursor-default" />
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e] hover:opacity-80 transition-opacity cursor-default" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840] hover:opacity-80 transition-opacity cursor-default" />
+              <span className="mx-auto text-xs text-[#006600] tracking-widest">portfolio — terminal</span>
+            </div>
+            {/* Terminal body */}
+            <div className="bg-[#0a0a0a] px-5 pt-4 pb-5">
+              <p className="text-[#008f11] text-xs mb-3">
+                <span className="text-[#004d00]">KJB@portfolio:~$</span> ./init
+              </p>
+              {/* ASCII name */}
+              <pre
+                className="text-[#00ff41] leading-tight mb-4 overflow-x-auto"
+                style={{ fontSize: '8px', textShadow: '0 0 6px rgba(0,255,65,0.55)' }}
+              >{` _  __  _   _  __  __      _ _   _ ____  _____   ____    _    __  __    _
+| |/ / | | | ||  \\/  |    | | | | |  _ \\| ____| | __ )  / \\  |  \\/  |  / \\
+| ' /  | | | || |\\/| | _  | | | | | | | |  _|   |  _ \\ / _ \\ | |\\/| | / _ \\
+| . \\  | |_| || |  | || |_| | |_| | |_| | |___  | |_) / ___ \\| |  | |/ ___ \\
+|_|\\_\\  \\___/ |_|  |_| \\___/  \\___/|____/|_____|  |____/_/   \\_\\_|  |_/_/   \\_\\`}</pre>
+              <div className="border-t border-[#003300] mb-3" />
+              <TerminalCommand />
+            </div>
+          </div>
         </motion.div>
 
         <motion.p variants={item} className="text-[#006600] max-w-xl mx-auto mb-10 text-sm leading-relaxed">

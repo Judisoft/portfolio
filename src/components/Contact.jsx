@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import MacOSWindow from './MacOSWindow'
 
 const CONTACT_ITEMS = [
   {
@@ -110,66 +111,46 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
-              {/* Title bar */}
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
-                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="mx-auto text-xs text-[#006600] tracking-widest">contact.json</span>
-              </div>
-              {/* Body */}
-              <div className="bg-[#0a0a0a] px-5 py-4 space-y-4">
-                <p className="text-[#004d00] text-xs mb-1">
-                  <span className="text-[#008f11]">$</span> cat contact.json
-                </p>
-                {CONTACT_ITEMS.map((item) => (
-                  <div key={item.label} className="flex items-center gap-4 group">
-                    <div className="w-8 h-8 rounded glass border border-[#003300] flex items-center justify-center text-[#008f11] shrink-0 group-hover:border-[#00ff41]/40 group-hover:text-[#00ff41] transition-colors">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <p className="text-xs text-[#004d00]">&quot;{item.label}&quot;:</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          target={item.href.startsWith('http') ? '_blank' : undefined}
-                          rel="noopener noreferrer"
-                          className="text-[#00cc33] text-xs hover:text-[#00ff41] hover:neon-text transition-colors"
-                        >
-                          &quot;{item.value}&quot;
-                        </a>
-                      ) : (
-                        <p className="text-[#00cc33] text-xs">&quot;{item.value}&quot;</p>
-                      )}
-                    </div>
+            <MacOSWindow title="contact.json" bodyClassName="px-5 py-4 space-y-4">
+              <p className="text-[#004d00] text-xs mb-1">
+                <span className="text-[#008f11]">$</span> cat contact.json
+              </p>
+              {CONTACT_ITEMS.map((item) => (
+                <div key={item.label} className="flex items-center gap-4 group">
+                  <div className="w-8 h-8 rounded glass border border-[#003300] flex items-center justify-center text-[#008f11] shrink-0 group-hover:border-[#00ff41]/40 group-hover:text-[#00ff41] transition-colors">
+                    {item.icon}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
-              {/* Title bar */}
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
-                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="mx-auto text-xs text-[#006600] tracking-widest">status.sh</span>
-              </div>
-              {/* Body */}
-              <div className="bg-[#0a0a0a] px-5 py-4">
-                <p className="text-xs text-[#004d00] mb-3">
-                  <span className="text-[#008f11]">$</span> status --check
-                </p>
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse shadow-sm shadow-[#00ff41]" />
-                  <span className="text-[#00cc33] text-xs">ONLINE — open to opportunities</span>
+                  <div>
+                    <p className="text-xs text-[#004d00]">&quot;{item.label}&quot;:</p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel="noopener noreferrer"
+                        className="text-[#00cc33] text-xs hover:text-[#00ff41] hover:neon-text transition-colors"
+                      >
+                        &quot;{item.value}&quot;
+                      </a>
+                    ) : (
+                      <p className="text-[#00cc33] text-xs">&quot;{item.value}&quot;</p>
+                    )}
+                  </div>
                 </div>
-                <p className="text-[#006600] text-xs mt-2 leading-relaxed">
-                  Available for full-time roles, contract work, consulting in backend / fintech engineering, and Product Development.
-                </p>
+              ))}
+            </MacOSWindow>
+
+            <MacOSWindow title="status.sh">
+              <p className="text-xs text-[#004d00] mb-3">
+                <span className="text-[#008f11]">$</span> status --check
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse shadow-sm shadow-[#00ff41]" />
+                <span className="text-[#00cc33] text-xs">ONLINE — open to opportunities</span>
               </div>
-            </div>
+              <p className="text-[#006600] text-xs mt-2 leading-relaxed">
+                Available for full-time roles, contract work, consulting in backend / fintech engineering, and Product Development.
+              </p>
+            </MacOSWindow>
           </motion.div>
 
           {/* Form column */}
@@ -178,52 +159,45 @@ export default function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="rounded-xl overflow-hidden border border-[#00ff41]/20" style={{ boxShadow: '0 0 30px rgba(0,255,65,0.08), 0 8px 32px rgba(0,0,0,0.5)' }}>
-              {/* Title bar */}
-              <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a1a] border-b border-[#00ff41]/10">
-                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="mx-auto text-xs text-[#006600] tracking-widest">send_message.sh</span>
-              </div>
-            <form onSubmit={handleSubmit} className="bg-[#0a0a0a] px-5 py-4 space-y-5">
-              <p className="text-[#004d00] text-xs mb-1">
-                <span className="text-[#008f11]">$</span> ./send_message.sh
-              </p>
-              <div className="grid sm:grid-cols-2 gap-5">
-                <FormField label="name" id="name">
-                  <input id="name" name="name" value={form.name} onChange={handleChange}
-                    placeholder="your_name" required className={inputClass} />
+            <MacOSWindow title="send_message.sh" bodyClassName="px-5 py-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <p className="text-[#004d00] text-xs mb-1">
+                  <span className="text-[#008f11]">$</span> ./send_message.sh
+                </p>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <FormField label="name" id="name">
+                    <input id="name" name="name" value={form.name} onChange={handleChange}
+                      placeholder="your_name" required className={inputClass} />
+                  </FormField>
+                  <FormField label="email" id="email">
+                    <input id="email" name="email" type="email" value={form.email} onChange={handleChange}
+                      placeholder="you@example.com" required className={inputClass} />
+                  </FormField>
+                </div>
+
+                <FormField label="subject" id="subject">
+                  <input id="subject" name="subject" value={form.subject} onChange={handleChange}
+                    placeholder="topic_here" className={inputClass} />
                 </FormField>
-                <FormField label="email" id="email">
-                  <input id="email" name="email" type="email" value={form.email} onChange={handleChange}
-                    placeholder="you@example.com" required className={inputClass} />
+
+                <FormField label="message" id="message">
+                  <textarea id="message" name="message" value={form.message} onChange={handleChange}
+                    rows={5} placeholder="// your message here..." required
+                    className={`${inputClass} resize-none`} />
                 </FormField>
-              </div>
 
-              <FormField label="subject" id="subject">
-                <input id="subject" name="subject" value={form.subject} onChange={handleChange}
-                  placeholder="topic_here" className={inputClass} />
-              </FormField>
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded bg-[#00ff41] text-black font-bold text-sm hover:bg-[#39ff14] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-[#00ff41]/20"
+                >
+                  {status === 'sent' ? '[OK] opening mail client...' : '> send_message()'}
+                </button>
 
-              <FormField label="message" id="message">
-                <textarea id="message" name="message" value={form.message} onChange={handleChange}
-                  rows={5} placeholder="// your message here..." required
-                  className={`${inputClass} resize-none`} />
-              </FormField>
-
-              <button
-                type="submit"
-                className="w-full py-3 rounded bg-[#00ff41] text-black font-bold text-sm hover:bg-[#39ff14] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-[#00ff41]/20"
-              >
-                {status === 'sent' ? '[OK] opening mail client...' : '> send_message()'}
-              </button>
-
-              <p className="text-xs text-[#004d00] text-center">
-                // opens your default mail client with the message pre-filled
-              </p>
-            </form>
-            </div>
+                <p className="text-xs text-[#004d00] text-center">
+                  // opens your default mail client with the message pre-filled
+                </p>
+              </form>
+            </MacOSWindow>
           </motion.div>
         </div>
       </div>

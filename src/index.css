@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+  color: #00cc33;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 4px;
+}
+
+::selection {
+  background: #00ff41;
+  color: #000;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#00ff41] via-[#39ff14] to-[#00cc33] bg-clip-text text-transparent;
+  }
+  .glass {
+    background: rgba(0, 255, 65, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 65, 0.12);
+  }
+  .neon-border {
+    border: 1px solid rgba(0, 255, 65, 0.35);
+    box-shadow: 0 0 18px rgba(0, 255, 65, 0.08), inset 0 0 18px rgba(0, 255, 65, 0.03);
+  }
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8), 0 0 30px rgba(0, 255, 65, 0.4);
+  }
+  .section-pad {
+    @apply py-24 px-6 md:px-12 lg:px-24;
+  }
+  .terminal-cursor::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+    color: #00ff41;
+  }
+}
